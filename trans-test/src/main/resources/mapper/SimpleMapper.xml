@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xds.trans.mapper.SimpleMapper">
+
+    <insert id="insert" parameterType="com.xds.trans.po.Simple">
+        <selectKey resultType="java.lang.Long" keyProperty="accountId" order="AFTER">
+            SELECT @@IDENTITY
+        </selectKey>
+        insert into simple (name, createTime)
+        values (#{name,jdbcType=VARCHAR},
+                #{createTime,jdbcType=TIMESTAMP})
+    </insert>
+</mapper>
